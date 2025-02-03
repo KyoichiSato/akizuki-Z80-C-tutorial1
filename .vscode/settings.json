@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "*.lis": "asm-list-file",
+        "*.xas": "asm-collection",
+        "*.xls": "asm-collection",
+        "EXAMPLE.C": "cpp",
+        "STDIO.H": "cpp"
+    },
+    "C_Cpp.default.compilerPath": "c:\\akiz80\\BIN\\XCCV.EXE",
+    "C_Cpp.errorSquiggles": "disabled"
+}

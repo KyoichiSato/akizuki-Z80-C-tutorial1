@@ -1,0 +1,34 @@
+;
+; リンクパラメータファイル
+; "C:\akiz80\LIB\z80\STARTUP\EXAMPLE.XLS" にあるサンプルを
+; リンクするモジュール名だけを編集してそのまま
+;
+; This code is provided under a CC0 Public Domain License.
+; http://creativecommons.org/publicdomain/zero/1.0/
+; 
+; 2025年1月30日 佐藤恭一 kyoutan.jpn.org
+
+;-------------------------------+
+;	RAM Area		|
+;-------------------------------+
+/ADDR=1000
+/SECT=D_*|COMM		(data	=_DATA)
+/SECT=B_*|COMM		(bss	=_BSS)
+/SECT=_STACK
+;-------------------------------+
+;	ROM Area		|
+;-------------------------------+
+/ADDR=8000
+/SECT=C_*|CODE
+/SECT=I_*
+;-------------------------------+
+;	init data section	+
+;-------------------------------+
+/init_section = _INIT_DATA	(_DATA)
+;-------------------------------+
+;	linkage module		|
+;-------------------------------+
+/name = tutorial_1
+/entn = startup
+/modl = startup
+/modl = tutorial_1

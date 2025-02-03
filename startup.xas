@@ -1,0 +1,82 @@
+;
+; XCC-V Z80
+; スタートアップルーチン
+;
+; "C:\akiz80\LIB\z80\STARTUP\STARTUP.XAS" にあるサンプルそのまま。
+; リロケータブルアセンブラなので、プログラムが配置されるアドレスはリンク時に決まります。
+; ORG で絶対番地は指定しません。
+;
+; This code is provided under a CC0 Public Domain License.
+; http://creativecommons.org/publicdomain/zero/1.0/
+; 
+; 2024年12月11日 佐藤恭一 kyoutan.jpn.org
+
+        GLOBAL  _STACK_END
+
+;********************************************************
+;*              Startup Program for Z80                 *
+;********************************************************
+;-------------------------------+
+;       Stack   (RAM)           + スタックセクションの定義
+;-------------------------------+
+_STACK          sect    stak
+        ds      300h    ; スタックサイズ
+                        ; ローカル変数にスタックを使うので、多めに確保しておく）
+_STACK_END:
+;-------------------------------+
+;       init section    (ROM)   + 初期値格納用のセクションの定義
+;-------------------------------+
+_INIT_DATA      sect    comm
+;-------------------------------+
+;       Control data    (RAM)   + ライブラリ用の変数の定義
+;-------------------------------+
+D_DATA          sect    comm
+        global  _errno
+_errno  dw      0               ;for math lib  エラー番号設定領域
+                                ; C言語の算術ライブラリで使用する
+
+;=======================================+
+;       startup routine (ROM)           +
+;=======================================+
+C_start         sect    code
+_start:
+        ld      HL,_STACK_END           ;Set Stack Pointer  スタックポインタの設定
+        ld      SP,HL
+;*** init PORT,TIMER,...etc
+;       :
+;       :
+;================= clear BSS ==================== 初期値のない変数領域のクリア
+        extnal  _BSS_TOP,_BSS_SIZE
+        ld      A,0
+        ld      DE,_BSS_TOP
+        ld      HL,_BSS_SIZE
+        ld      BC,0
+        or      A
+        adc     HL,BC
+        jr      z,L110$
+        dec     BC
+L100$:
+        ld      (DE),A
+        inc     DE
+        or      A
+        adc     HL,BC
+        jr      nz,L100$
+L110$:
+;================= init DATA ==================== 初期値のある変数の初期値データのコピー
+        extnal  _DATA_TOP,_DATA_SIZE
+        ld      HL,_INIT_DATA
+        ld      DE,_DATA_TOP
+        ld      BC,_DATA_SIZE
+        ld      A,B
+        or      C
+        jr      z,L210$
+L200$:
+        ldi
+        jp      pe,L200$
+L210$:
+;*** call main ***  main 関数の起動
+        extnal  _main
+        call    _main	; main関数実行
+300$:
+        jr      300$
+        end     _start

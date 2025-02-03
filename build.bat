@@ -4,10 +4,7 @@ REM
 REM This code is provided under a CC0 Public Domain License.
 REM http://creativecommons.org/publicdomain/zero/1.0/
 REM
-REM 2024年12月19日 佐藤恭一 kyoutan.jpn.org
-
-REM 最適化の ON/OFF
-SET OPTIMIZE=OFF
+REM 2025年1月28日 佐藤恭一 kyoutan.jpn.org
 
 REM XCCVをインストールしたフォルダを指定
 SET XCC_PATH=C:\akiz80\
@@ -24,25 +21,14 @@ SET XAS_CODE=sjis
 SET XAS_MPUNAME=z80
 
 REM コンパイル
-IF "%OPTIMIZE%"=="ON" (
-xccv test.c -d -O o -w -LW1 -LE2 -ks
-xccv cpmstdio.c -d -O o -w -LW1 -LE2 -ks
-) ELSE (
-xccv test.c -d -w -LW1 -LE2 -ks
-xccv cpmstdio.c -d -w -LW1 -LE2 -ks
-)
+xccv tutorial_1.c -d -w -LW1 -LE2 -ks
 
 REM アセンブル
 xassv startup.xas -da -a -r
-xassv test.xas -da -a -r
-xassv cpm.xas -da -a -r
-xassv cpmstdio.xas -da -a -r
+xassv tutorial_1.xas -da -a -r
 
 REM リンク（リンク情報は .xlsファイルに記述する）
-xlnkv test.xls -l -m -d -s -o -p
+xlnkv tutorial_1.xls -l -m -d -s -o -p
 
 REM 出力オブジェクトをインテルHEX形式に変換
-xoutv test.xlo -d -t obj1,sym1 -l 
-
-REM インテルHEXを MSX-DOS / CP/M の COMファイルに変換
-python hex2com.py test.xho
+xoutv tutorial_1.xlo -d -t obj1,sym1 -l 
