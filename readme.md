@@ -21,7 +21,7 @@ C言語の仕様が古かったりしない ANSI Cで、マニュアルも日本
 
 #### 別頁
 - [CP/M / MSX-DOSで動くプログラムを作る](https://github.com/KyoichiSato/akizuki-Z80-C-tutorial2)
-- [CP/M / MSX-DOSで標準入出力とファイル入出力を使えるようにする]()
+- [CP/M / MSX-DOSで標準入出力とファイル入出力を使えるようにする](https://github.com/KyoichiSato/akizuki-Z80-C-tutorial3)
 
 ------
 
