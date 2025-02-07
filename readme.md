@@ -16,9 +16,12 @@ C言語の仕様が古かったりしない ANSI Cで、マニュアルも日本
 1. [使い始める前に](#使い始める前に)
 1. [とりあえず使ってみる](#とりあえず使ってみる)
 1. [コンパイル - アセンブル - リンクの方法](#コンパイル---アセンブル---リンクの方法)
-1. [CP/M / MSX-DOSで動くプログラムを作る](https://github.com/KyoichiSato/akizuki-Z80-C-tutorial2)
-1. [CP/M / MSX-DOSで標準入出力とファイル入出力を使えるようにする]()
+1. [gitを使わない人向け ソースコードのダウンロード方法](#gitを使わない人向け-ソースコードのダウンロード方法)
 1. [この文章のライセンス](#ライセンス)
+
+#### 別頁
+- [CP/M / MSX-DOSで動くプログラムを作る](https://github.com/KyoichiSato/akizuki-Z80-C-tutorial2)
+- [CP/M / MSX-DOSで標準入出力とファイル入出力を使えるようにする]()
 
 ------
 
@@ -543,7 +546,7 @@ No   Unit Name   Global.Symbol    Location   External Information (Unit.no/Locat
 :148040005EFEDD56FFD5CD0080DD71FEDD70FFDDF9DDE1C987
 :00000001FF
 ```
-組み込みマイコンでよく使われる [IntelHex](https://ja.wikipedia.org/wiki/Intel_HEX)形式になってるので、
+組み込みマイコンでよく使われる [Intel Hex](https://ja.wikipedia.org/wiki/Intel_HEX)形式になってるので、
 ROMライタで書き込んだり、CP/Mの LOADコマンドで COM形式の実行ファイル変換するなどして利用します。
 [Motorola S-record](https://ja.wikipedia.org/wiki/S-record)形式で出力させることもできます。
 
@@ -714,6 +717,14 @@ Z80でも OSを使用しないプログラムなら同じように自由にプ�
 続いて、[CP/M / MSX-DOSで実行できるプログラムを作ってみることにします。](https://github.com/KyoichiSato/akizuki-Z80-C-tutorial2)
 
 ------
+
+## gitを使わない人向け ソースコードのダウンロード方法
+![Download ZIP](image/download.png)
+githubの [<> Code] と書いてあるところを押して、「Download ZIP」を選ぶとソースコードをまとめてダウンロードできます。
+
+XCC-Vをインストールしてあれば、build.batを実行すれば実際にビルドしてみることができます。
+
+--------
 
 ## ライセンス
 この文章とサンプルコードは、CC0 Public Domain License で提供します。
