@@ -118,6 +118,7 @@ xccv tutorial_1.c -d -w -LW1 -LE2 -ks
 アセンブリのソースファイル `"tutorial_1.xas"` が出力されます。
 
 ![VS Codeで build](image/build.png "VS Codeのコンソールで実行すればらくちん")
+
 VS Codeの使い方は、Windowsの Copilotに質問すれば教えてくれます。
 
 #### tutorial_1.xas
